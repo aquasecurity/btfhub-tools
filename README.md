@@ -2,7 +2,7 @@
 
 This repository is meant to be used together with:
 
-- https://github.com/aquasecurity/btfhub-tools
+- https://github.com/aquasecurity/btfhub
 
 You may consider it as a spin off of the original btfhub repository tools,
 scripts and binaries. The idea behind this is that, since we're maintaining
