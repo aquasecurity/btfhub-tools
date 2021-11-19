@@ -1,0 +1,22 @@
+name: Update BTFHub Archives
+on:
+  #schedule:
+  #- cron: '0 0 1 * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Update BTF
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Check out code repo
+      uses: actions/checkout@v2
+
+    - name: Fetch current BTFHub repo
+      run: make clone gather
+
+    - name: Update BTF archives
+      run: make update
+
+    - name: Commit and Push to BTFHub repo
+      run: make push
