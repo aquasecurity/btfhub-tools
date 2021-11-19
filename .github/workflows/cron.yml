@@ -12,11 +12,24 @@ jobs:
     - name: Check out code repo
       uses: actions/checkout@v2
 
-    - name: Fetch current BTFHub repo
-      run: make clone gather
+    - name: Checkout public BTFHub repo
+      uses: actions/checkout@v2
+      with:
+        repository: simar7/btfhub
+        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        path: btfhub-repo
+
+    - name: Prepare current BTFHub repo archives
+      run: make gather
 
     - name: Update BTF archives
       run: make update
 
     - name: Commit and Push to BTFHub repo
-      run: make push
+      run: |
+        cd btfhub-repo
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git commit -m "Update BTF Archives"
+        git push

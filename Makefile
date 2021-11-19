@@ -1,6 +1,3 @@
-clone:
-	git clone git@github.com:simar7/btfhub.git btfhub-repo
-
 gather:
 	cp -R btfhub-repo/archive .
 
@@ -9,11 +6,3 @@ update:
   		./tools/update.sh $$distro; \
 	done
 	rsync -av ./archive btfhub-repo
-
-push:
-	cd btfhub-repo
-	git config --local user.email "action@github.com"
-	git config --local user.name "GitHub Action"
-	git add -A
-	git commit -m "Update BTF Archives"
-	git push
