@@ -15,7 +15,7 @@ jobs:
     - name: Checkout public BTFHub repo
       uses: actions/checkout@v2
       with:
-        repository: simar7/btfhub
+        repository: aquasecurity/btfhub
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
         path: btfhub-repo
 
